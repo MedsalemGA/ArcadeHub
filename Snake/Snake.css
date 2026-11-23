@@ -1,0 +1,140 @@
+/* =========================================================
+   Jeu Snake : styles propres à la page
+   (variables, navbar et boutons viennent d'Arcadehub.css)
+   ========================================================= */
+
+/* ---------- Fil d'Ariane ---------- */
+.game-breadcrumb {
+  --bs-breadcrumb-divider-color: var(--muted);
+  --bs-breadcrumb-item-active-color: var(--text);
+  margin-bottom: 1rem;
+}
+.game-breadcrumb a { color: var(--muted); text-decoration: none; }
+.game-breadcrumb a:hover { color: var(--gold); }
+
+/* ---------- Cartes de score ---------- */
+.score-card {
+  padding: 14px 10px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+}
+.score-label { font-size: 0.95rem; color: var(--muted); }
+.score-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.text-accent { color: var(--accent-2); }
+
+/* ---------- Plateau ---------- */
+.snake-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(124, 92, 255, 0.2);
+  touch-action: none; /* évite le défilement pendant un glissement */
+}
+#game {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+/* Écran de départ, pause et fin de partie */
+.snake-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background: rgba(15, 16, 32, 0.85);
+  backdrop-filter: blur(2px);
+}
+.snake-overlay[hidden] { display: none; }
+
+/* ---------- Croix directionnelle ---------- */
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(2, 64px);
+  grid-template-areas:
+    ".    up    ."
+    "left down  right";
+  gap: 8px;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+.dpad-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+}
+.dpad-btn:hover,
+.dpad-btn:active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.dpad-up    { grid-area: up; }
+.dpad-left  { grid-area: left; }
+.dpad-down  { grid-area: down; }
+.dpad-right { grid-area: right; }
+
+/* ---------- Panneaux latéraux ---------- */
+.panel {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.panel-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.form-select {
+  min-height: 44px;
+  background-color: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+}
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(124, 92, 255, 0.25);
+}
+kbd {
+  padding: 0.15rem 0.45rem;
+  color: var(--text);
+  background: var(--line);
+  border-radius: 6px;
+}
+
+/* ---------- Meilleures parties ---------- */
+.history {
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: var(--line);
+  --bs-list-group-color: var(--text);
+}
+.history-empty { color: var(--muted); }
+.history-empty::before { display: none; }
+
+/* ---------- Petits écrans ---------- */
+@media (max-width: 575.98px) {
+  .score-value { font-size: 1.6rem; }
+  .score-label { font-size: 0.8rem; }
+}

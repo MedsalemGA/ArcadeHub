@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArcadeHub | Plateforme de jeux en ligne</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 : toujours AVANT votre CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./Arcadehub.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg sticky-top arcade-navbar">
+      <div class="container-xl">
+        <a class="navbar-brand" href="./Arcadehub.html">ARCADE<span>HUB</span></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mainNav" aria-controls="mainNav"
+                aria-expanded="false" aria-label="Ouvrir le menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto gap-lg-2 text-center">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="./Arcadehub.html">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="#nosjeux">Jeux</a></li>
+            <li class="nav-item"><a class="nav-link" href="./classement.html">Classement</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Profil</a></li>
+          </ul>
+          <button id="connex" class="btn btn-arcade btn-liquid" type="button">Se connecter</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== BANNIÈRE COOKIES ===== -->
+  <div id="cookie-banner" class="card shadow-lg" role="dialog"
+       aria-labelledby="cookie-title" aria-describedby="cookie-desc">
+    <div class="card-body p-4">
+      <h2 id="cookie-title" class="h5 text-warning">Gestion de vos préférences de cookies</h2>
+      <p id="cookie-desc" class="small text-body-secondary">
+        Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic
+        et personnaliser le contenu. Vous pouvez choisir les catégories que vous souhaitez autoriser.
+      </p>
+
+      <form id="cookie-form">
+        <div class="cookie-option">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch"
+                   id="cookie-necessaire" name="necessaire" checked disabled>
+            <label class="form-check-label fw-semibold" for="cookie-necessaire">
+              Cookies strictement nécessaires <span class="fw-normal text-body-secondary">(toujours actifs)</span>
+            </label>
+          </div>
+          <p class="cookie-detail">Indispensables au bon fonctionnement et à la sécurité du site.</p>
+        </div>
+
+        <div class="cookie-option">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch"
+                   id="cookie-analytique" name="analytique">
+            <label class="form-check-label fw-semibold" for="cookie-analytique">Cookies analytiques</label>
+          </div>
+          <p class="cookie-detail">Nous aident à mesurer l'audience et à comprendre comment vous utilisez le site.</p>
+        </div>
+
+        <div class="cookie-option">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch"
+                   id="cookie-marketing" name="marketing">
+            <label class="form-check-label fw-semibold" for="cookie-marketing">Cookies marketing et publicitaires</label>
+          </div>
+          <p class="cookie-detail">Permettent d'afficher des publicités adaptées à vos centres d'intérêt.</p>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-end gap-2 mt-3">
+          <button type="button" id="btn-refuser" class="btn btn-ghost">Tout refuser</button>
+          <button type="submit" id="btn-enregistrer" class="btn btn-outline-arcade">Enregistrer mes choix</button>
+          <button type="button" id="btn-accepter" class="btn btn-arcade btn-liquid">Tout accepter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="py-5">
+      <div class="container-xl">
+        <div class="row align-items-center g-5">
+
+          <div class="col-lg-5 herotexte">
+            <p class="eyebrow">Plateforme de jeux en ligne</p>
+            <h1 class="typewriter">Jouez, battez des records, grimpez au classement.</h1>
+            <p class="soustexte">Des jeux rapides, un score sauvegardé et un classement entre étudiants.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#nosjeux" class="btn btn-arcade btn-liquid btn-lg">Commencer à jouer</a>
+              <a href="./classement.html" class="btn btn-arcade btn-liquid btn-lg">Voir le classement</a>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="hero-gallery">
+              <div class="game-card active">
+                <img src="./Gemini_Generated_Image_lp0ssolp0ssolp0s.jpg" alt="Capture du jeu 1">
+              </div>
+              <div class="game-card">
+                <img src="./m2.jpg" alt="Capture du jeu 2">
+              </div>
+              <div class="game-card">
+                <img src="./WIN_20251207_20_51_58_Pro.jpg" alt="Capture du jeu 3">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VIDÉO DE PRÉSENTATION ===== -->
+    <section class="videoplace py-4">
+      <div class="container-xl">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="videomake ratio ratio-16x9">
+              <video src="" controls muted loop playsinline aria-label="Présentation des jeux"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATISTIQUES ===== -->
+    <section class="container-xl my-5">
+      <div class="stats row g-0 text-center">
+        <div class="col-12 col-md-4 py-4">
+          <div id="gamenbr" class="stat-number">0</div>
+          <div class="stat-label">Jeux disponibles</div>
+        </div>
+        <div class="col-12 col-md-4 py-4">
+          <div id="matchesnbr" class="stat-number">0</div>
+          <div class="stat-label">Parties jouées</div>
+        </div>
+        <div class="col-12 col-md-4 py-4">
+          <div id="registerplayer" class="stat-number">0</div>
+          <div class="stat-label">Joueurs inscrits</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOS JEUX ===== -->
+    <section class="nosjeux py-5" id="nosjeux">
+      <div class="container-xl">
+
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">Nos jeux</h2>
+          <p class="text-body-secondary mb-0">Choisissez un jeu, battez votre record et partagez votre score.</p>
+        </div>
+
+        <div class="row g-4">
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100">
+              <img src="/memorygame.jpeg" class="card-img-top" alt="Jeu Memory">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="card-title h5 fw-bold mb-0">Memory</h3>
+                  <span class="badge text-bg-success">Facile</span>
+                </div>
+                <p class="card-text text-body-secondary">Retrouvez toutes les paires le plus vite possible.</p>
+                <a href="/Memory/Memory.html" class="btn btn-arcade btn-liquid w-100 mt-auto">Jouer maintenant</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100">
+              <img src="/snake.jpg" class="card-img-top" alt="Jeu Snake">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="card-title h5 fw-bold mb-0">Snake</h3>
+                  <span class="badge text-bg-warning">Moyen</span>
+                </div>
+                <p class="card-text text-body-secondary">Mangez, grandissez et évitez les murs.</p>
+                <a href="/Snake/Snake.html" class="btn btn-arcade btn-liquid w-100 mt-auto">Jouer maintenant</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100">
+              <img src="/quiz.jpg" class="card-img-top" alt="Jeu Quiz Culture">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="card-title h5 fw-bold mb-0">Quiz Culture</h3>
+                  <span class="badge text-bg-danger">Difficile</span>
+                </div>
+                <p class="card-text text-body-secondary">10 questions chronométrées sur la Tunisie et le monde.</p>
+                <a href="./QUIZ/Quiz.html" class="btn btn-arcade btn-liquid w-100 mt-auto">Jouer maintenant</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100">
+              <img src="/morpion.png" class="card-img-top" alt="Jeu Morpion">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="card-title h5 fw-bold mb-0">Morpion</h3>
+                  <span class="badge text-bg-success">Facile</span>
+                </div>
+                <p class="card-text text-body-secondary">Alignez trois symboles avant votre adversaire.</p>
+                <a href="/XO/xo.html" class="btn btn-arcade btn-liquid w-100 mt-auto">Jouer maintenant</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="arcade-footer py-4 mt-5">
+    <div class="container-xl d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <a class="footer-brand" href="./Arcadehub.html">ARCADE<span>HUB</span></a>
+      <small class="text-body-secondary">© 2026 ArcadeHub. Projet universitaire.</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (obligatoire pour le menu mobile), puis votre JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./Arcadehub.js"></script>
+</body>
+</html>

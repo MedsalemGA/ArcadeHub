@@ -1,0 +1,130 @@
+/* =========================================================
+   Page Classement
+   (variables, navbar et boutons viennent d'Arcadehub.css)
+   ========================================================= */
+
+/* ---------- Bannière invité / connecté ---------- */
+.auth-banner {
+  --bs-alert-bg: var(--surface);
+  --bs-alert-border-color: var(--line);
+  --bs-alert-color: var(--text);
+  margin-bottom: 2rem;
+  border-radius: 12px;
+}
+.auth-banner a { color: var(--gold); font-weight: 700; }
+
+/* ---------- Cartes de records ---------- */
+.record-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--c, var(--accent));
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.record-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(124, 92, 255, 0.25);
+}
+.record-game {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.record-score {
+  font-size: clamp(2.5rem, 6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--c, var(--accent-2));
+}
+.record-unit { margin-bottom: 1rem; }
+.record-player {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.record-detail { margin: 0 0 1.25rem; }
+
+/* ---------- Onglets ---------- */
+.lb-tabs {
+  --bs-nav-pills-link-active-bg: var(--accent);
+  --bs-nav-pills-link-active-color: #fff;
+  --bs-nav-link-color: var(--muted);
+  --bs-nav-link-hover-color: var(--gold);
+  gap: 0.5rem;
+}
+.lb-tabs .nav-link {
+  min-height: 44px;
+  font-weight: 700;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+}
+.lb-tabs .nav-link.active { border-color: var(--accent); }
+
+/* ---------- Tableau ---------- */
+.lb-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.lb-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text);
+  --bs-table-border-color: var(--line);
+  --bs-table-hover-bg: rgba(124, 92, 255, 0.1);
+  --bs-table-hover-color: var(--text);
+  min-width: 520px;
+}
+.lb-table th {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.lb-table td { padding: 1rem 1.25rem; }
+.lb-table .empty-row {
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Ligne du joueur connecté */
+.lb-table tr.mine td { background: rgba(124, 92, 255, 0.18); }
+.badge-you {
+  margin-left: 0.5rem;
+  padding: 0.25em 0.6em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0f1020;
+  background: var(--accent-2);
+  border-radius: 20px;
+}
+
+/* Médailles */
+.rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--line);
+  border-radius: 50%;
+}
+.rank-1 { color: #0f1020; background: #ffd700; }
+.rank-2 { color: #0f1020; background: #c0c7d6; }
+.rank-3 { color: #0f1020; background: #cd7f32; }
+
+/* ---------- Modale ---------- */
+#clearModal {
+  --bs-modal-bg: var(--surface);
+  --bs-modal-border-color: var(--accent);
+  --bs-modal-border-width: 2px;
+  --bs-modal-border-radius: 16px;
+}

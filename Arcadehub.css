@@ -1,0 +1,336 @@
+/* =========================================================
+   ArcadeHub : thème personnalisé par-dessus Bootstrap 5.3
+   ========================================================= */
+
+/* ---------- 1. Variables et thème ---------- */
+:root {
+  --bg: #0f1020;
+  --surface: #1a1b33;
+  --line: #2c2e52;
+  --text: #f1f2ff;
+  --muted: #a8abcc;
+  --accent: #7c5cff;
+  --accent-2: #22d3a6;
+  --gold: gold;
+  --font: "Space Grotesk", Arial, sans-serif;
+}
+
+/* On redéfinit les variables Bootstrap du mode sombre */
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--text);
+  --bs-body-font-family: var(--font);
+  --bs-secondary-color: var(--muted);
+  --bs-border-color: var(--line);
+  --bs-primary: #7c5cff;
+  --bs-primary-rgb: 124, 92, 255;
+}
+
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 90px; }
+
+/* ---------- 2. Boutons ---------- */
+.btn-arcade {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-border-width: 2px;
+  --bs-btn-border-radius: 10px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-hover-color: #1a1a1a;
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--gold);
+  --bs-btn-active-color: #1a1a1a;
+  --bs-btn-active-bg: var(--gold);
+  --bs-btn-active-border-color: var(--gold);
+  font-family: var(--font);
+  min-height: 44px;
+  transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+/* Effet « liquide doré » (remplace les #connex dupliqués) */
+.btn-liquid {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-liquid::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--gold);
+  border-radius: 50% 50% 0 0;
+  z-index: -1;
+  transition: bottom 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+}
+.btn-liquid:hover::before,
+.btn-liquid:focus-visible::before {
+  bottom: 0;
+  border-radius: 0;
+}
+
+.btn-ghost {
+  --bs-btn-color: #ccc;
+  --bs-btn-border-color: #44445a;
+  --bs-btn-border-width: 2px;
+  --bs-btn-border-radius: 10px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: transparent;
+  --bs-btn-active-border-color: #fff;
+}
+
+.btn-outline-arcade {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-border-width: 2px;
+  --bs-btn-border-radius: 10px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(124, 92, 255, 0.2);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: rgba(124, 92, 255, 0.35);
+  --bs-btn-active-border-color: var(--accent);
+}
+
+/* ---------- 3. Navbar ---------- */
+.arcade-navbar {
+  --bs-navbar-brand-color: #fff;
+  --bs-navbar-brand-hover-color: var(--accent-2);
+  --bs-navbar-color: var(--text);
+  --bs-navbar-hover-color: var(--gold);
+  --bs-navbar-active-color: var(--gold);
+  background-color: rgba(15, 16, 32, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--line);
+  padding-block: 0.75rem;
+}
+
+.arcade-navbar .navbar-brand,
+.footer-brand {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1.9rem;
+  transition: color 0.3s ease-in-out;
+}
+.navbar-brand span,
+.footer-brand span {
+  color: var(--accent-2);
+  transition: color 0.3s ease-in-out;
+}
+/* Animation d'inversion du logo */
+.navbar-brand:hover span { color: #fff; }
+
+.arcade-navbar .nav-link {
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.arcade-navbar .nav-link:hover,
+.arcade-navbar .nav-link.active {
+  background-color: var(--line);
+  color: var(--gold);
+}
+
+/* Pseudo affiché dans la navbar quand on est connecté */
+.navbar-user {
+  margin: 0.5rem 0.75rem 0.5rem 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ---------- 4. Hero ---------- */
+#hero { overflow: hidden; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+.eyebrow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-2);
+  border-radius: 50%;
+  animation: pulseCercle 2s ease-in-out infinite;
+}
+@keyframes pulseCercle {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 211, 166, 0.7); }
+  70%  { transform: scale(1.1);  box-shadow: 0 0 0 10px rgba(34, 211, 166, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 211, 166, 0); }
+}
+
+.typewriter {
+  margin: 0.3rem 0 1rem;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+.typewriter::after {
+  content: "|";
+  margin-left: 4px;
+  color: var(--accent-2);
+  animation: clignoter 0.8s infinite;
+}
+@keyframes clignoter {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.soustexte {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+/* Galerie : la carte active s'élargit */
+.hero-gallery {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 400px;
+}
+.game-card {
+  position: relative;
+  flex: 1;
+  height: 85%;
+  overflow: hidden;
+  clip-path: polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%);
+  opacity: 0.4;
+  filter: grayscale(70%) brightness(0.6);
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+.game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: transform 0.8s ease;
+}
+.game-card.active {
+  flex: 2.8;
+  height: 100%;
+  opacity: 1;
+  filter: grayscale(0%) brightness(1.05);
+  box-shadow: 0 15px 35px rgba(124, 92, 255, 0.4);
+}
+.game-card.active img { transform: scale(1); }
+
+@media (max-width: 991.98px) {
+  .hero-gallery { height: 260px; gap: 10px; }
+}
+
+/* ---------- 5. Vidéo de présentation ---------- */
+.videomake {
+  background: var(--surface);
+  border: 1px dashed var(--muted);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(124, 92, 255, 0.25);
+}
+.videomake video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 6. Statistiques ---------- */
+.stats {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+.stat-label {
+  font-size: 1.1rem;
+  color: #a0a0b5;
+}
+.stats > div + div { border-top: 1px solid var(--line); }
+@media (min-width: 768px) {
+  .stats > div + div { border-top: 0; border-left: 1px solid var(--line); }
+}
+
+/* ---------- 7. Cartes des jeux ---------- */
+.nosjeux .card {
+  --bs-card-bg: var(--surface);
+  --bs-card-border-color: var(--line);
+  --bs-card-border-radius: 16px;
+  --bs-card-inner-border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.nosjeux .card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px rgba(124, 92, 255, 0.3);
+}
+.nosjeux .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  background-color: var(--line); /* visible si l'image est absente */
+}
+
+/* ---------- 8. Bannière cookies ---------- */
+#cookie-banner {
+  --bs-card-bg: #161622;
+  --bs-card-border-color: var(--accent);
+  --bs-card-border-width: 2px;
+  --bs-card-border-radius: 14px;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 650px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  z-index: 9999;
+}
+.cookie-option {
+  margin-bottom: 12px;
+  padding: 12px 15px;
+  background-color: #1f1f2e;
+  border: 1px solid #2e2e42;
+  border-radius: 8px;
+}
+.cookie-detail {
+  margin: 6px 0 0 2.5rem;
+  font-size: 0.8125rem;
+  color: #a0a0b5;
+}
+
+/* ---------- 9. Footer ---------- */
+.arcade-footer {
+  background-color: var(--surface);
+  border-top: 2px solid var(--line);
+}
+.footer-brand { color: #fff; font-size: 1.4rem; }
+.footer-brand:hover { color: var(--accent-2); }
+.footer-brand:hover span { color: #fff; }
+
+/* ---------- 10. Accessibilité ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

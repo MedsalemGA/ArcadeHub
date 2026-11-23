@@ -1,0 +1,133 @@
+/* =========================================================
+   Page Connexion / Inscription
+   (variables, navbar et boutons viennent d'Arcadehub.css)
+   ========================================================= */
+
+/* ---------- Panneau de présentation ---------- */
+.promo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.eyebrow-text {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+.promo-list {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* ---------- Carte du formulaire ---------- */
+.auth-card {
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(124, 92, 255, 0.2);
+}
+@media (max-width: 575.98px) {
+  .auth-card { padding: 1.25rem; }
+}
+
+/* ---------- Onglets Connexion / Inscription ---------- */
+.auth-tabs {
+  --bs-nav-pills-link-active-bg: var(--accent);
+  --bs-nav-pills-link-active-color: #fff;
+  --bs-nav-link-color: var(--muted);
+  --bs-nav-link-hover-color: var(--gold);
+  gap: 0.5rem;
+}
+.auth-tabs .nav-link {
+  min-height: 44px;
+  font-weight: 700;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+}
+.auth-tabs .nav-link.active { border-color: var(--accent); }
+
+/* ---------- Champs ---------- */
+.form-label { color: var(--muted); }
+.form-control {
+  min-height: 46px;
+  background-color: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+}
+.form-control:focus {
+  background-color: var(--bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(124, 92, 255, 0.25);
+}
+.input-group > .form-control { border-radius: 10px 0 0 10px; }
+.input-group > .btn-toggle-pass {
+  min-width: 96px;
+  border-radius: 0 10px 10px 0;
+}
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Lien-bouton entre les deux onglets */
+.btn-link-inline {
+  padding: 0;
+  font-weight: 700;
+  color: var(--gold);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+}
+.btn-link-inline:hover { color: var(--text); }
+
+/* ---------- Indicateur de force du mot de passe ---------- */
+.pw-meter {
+  height: 8px;
+  overflow: hidden;
+  background: var(--line);
+  border-radius: 4px;
+}
+.pw-bar {
+  width: 0;
+  height: 100%;
+  background: #f87171;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+.pw-bar.medium { background: var(--gold); }
+.pw-bar.strong { background: var(--accent-2); }
+
+/* ---------- Alertes ---------- */
+.alert-error {
+  --bs-alert-bg: #3b1520;
+  --bs-alert-border-color: #f87171;
+  --bs-alert-color: #fecaca;
+}
+.alert-success-custom {
+  --bs-alert-bg: #0e3b34;
+  --bs-alert-border-color: var(--accent-2);
+  --bs-alert-color: #c8f7ea;
+}
+
+/* ---------- Écran « déjà connecté » ---------- */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0f1020;
+  background: var(--accent-2);
+  border-radius: 50%;
+}

@@ -1,0 +1,194 @@
+/* =========================================================
+   Jeu XO : styles propres à la page
+   (les variables, la navbar et les boutons viennent d'Arcadehub.css)
+   ========================================================= */
+
+/* ---------- Fil d'Ariane ---------- */
+.xo-breadcrumb {
+  --bs-breadcrumb-divider-color: var(--muted);
+  --bs-breadcrumb-item-active-color: var(--text);
+  margin-bottom: 1rem;
+}
+.xo-breadcrumb a { color: var(--muted); text-decoration: none; }
+.xo-breadcrumb a:hover { color: var(--gold); }
+
+/* ---------- Symboles X / O ---------- */
+.mark { font-weight: 700; }
+.mark.x { color: var(--accent); }
+.mark.o { color: var(--accent-2); }
+
+/* ---------- Cartes de score ---------- */
+.score-card {
+  padding: 14px 10px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.score-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.score-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+/* Le JS ajoute .active sur la carte du joueur dont c'est le tour */
+#card-x.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
+}
+#card-o.active {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(34, 211, 166, 0.25);
+}
+
+/* ---------- Message de tour ---------- */
+.status {
+  margin: 0 auto 1rem;
+  max-width: 420px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---------- Plateau ---------- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(124, 92, 255, 0.2);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  font-family: var(--font);
+  font-size: clamp(2.5rem, 12vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.25s, opacity 0.25s;
+}
+.cell:hover:not(:disabled) {
+  background: var(--line);
+  border-color: var(--accent);
+  transform: scale(1.04);
+}
+.cell:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.cell:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/* Classes ajoutées par le JS selon le symbole posé */
+.cell.x,
+.cell.x:disabled { color: var(--accent); }
+.cell.o,
+.cell.o:disabled { color: var(--accent-2); }
+
+/* Ligne gagnante */
+.cell.win,
+.cell.win:disabled {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--gold);
+  animation: popCell 0.5s ease;
+}
+@keyframes popCell {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* Le JS ajoute .finished sur #board à la fin de la partie */
+.board.finished .cell:not(.win) { opacity: 0.5; }
+
+/* ---------- Panneaux latéraux ---------- */
+.panel {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.panel-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* Boutons radio en groupe (btn-check) */
+.btn-mode {
+  --bs-btn-color: var(--text);
+  --bs-btn-bg: var(--bg);
+  --bs-btn-border-color: var(--line);
+  --bs-btn-border-width: 2px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-hover-color: var(--text);
+  --bs-btn-hover-bg: var(--line);
+  --bs-btn-hover-border-color: var(--line);
+  min-height: 44px;
+}
+.btn-check:checked + .btn-mode {
+  color: #fff;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+.btn-check:focus-visible + .btn-mode {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.form-select {
+  min-height: 44px;
+  background-color: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+}
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(124, 92, 255, 0.25);
+}
+.form-select:disabled { opacity: 0.5; }
+
+/* ---------- Historique ---------- */
+.history {
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: var(--line);
+  --bs-list-group-color: var(--text);
+  max-height: 220px;
+  overflow-y: auto;
+}
+.history-empty { color: var(--muted); }
+
+/* ---------- Modale de fin de partie ---------- */
+#resultModal {
+  --bs-modal-bg: var(--surface);
+  --bs-modal-border-color: var(--accent);
+  --bs-modal-border-width: 2px;
+  --bs-modal-border-radius: 16px;
+}
+
+/* ---------- Petits écrans ---------- */
+@media (max-width: 575.98px) {
+  .board { gap: 8px; padding: 10px; }
+  .score-value { font-size: 1.6rem; }
+}
