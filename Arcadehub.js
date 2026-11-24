@@ -114,3 +114,7 @@ function animerCompteur(id, valeurFinale, duree = 4500) {
 animerCompteur("matchesnbr", matchesnbr, 1500);
 animerCompteur("gamenbr", gamesnbr, 1500);
 animerCompteur("registerplayer", playersnbr, 1500);
+mode="dark"
+function changemode(){
+  
+}

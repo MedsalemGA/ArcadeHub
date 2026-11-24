@@ -1,0 +1,145 @@
+/* =========================================================
+   Page Profil
+   (variables, navbar et boutons viennent d'Arcadehub.css)
+   Les couleurs passent par des variables : mode clair et sombre OK.
+   ========================================================= */
+
+/* ---------- Panneaux ---------- */
+.panel {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+/* ---------- Carte d'identité ---------- */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1rem;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--on-accent-2, #0f1020);
+  background: var(--accent-2);
+  border-radius: 50%;
+}
+.profile-count {
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+/* ---------- Tuiles de records ---------- */
+.stat-tile {
+  height: 100%;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--c, var(--accent));
+  border-radius: 14px;
+}
+.stat-game { font-weight: 700; }
+.stat-value {
+  margin: 0.25rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--c, var(--accent-2));
+}
+.stat-detail { font-size: 0.85rem; }
+
+/* ---------- Tableau ---------- */
+.profile-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text);
+  --bs-table-border-color: var(--line);
+  --bs-table-hover-bg: rgba(124, 92, 255, 0.1);
+  --bs-table-hover-color: var(--text);
+  min-width: 440px;
+}
+.profile-table th {
+  padding: 0.9rem 1.1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.profile-table td { padding: 0.9rem 1.1rem; }
+.profile-table .empty-row {
+  padding: 1.75rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ---------- Formulaires ---------- */
+.form-label { color: var(--muted); }
+.form-control {
+  min-height: 46px;
+  background-color: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+}
+.form-control:focus {
+  background-color: var(--bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(124, 92, 255, 0.25);
+}
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Alertes (succès / erreur) ---------- */
+.alert-error {
+  --bs-alert-bg: var(--bad-bg, #3b1520);
+  --bs-alert-border-color: var(--bad, #f87171);
+  --bs-alert-color: var(--text);
+}
+.alert-success-custom {
+  --bs-alert-bg: var(--ok-bg, #0e3b34);
+  --bs-alert-border-color: var(--accent-2);
+  --bs-alert-color: var(--text);
+}
+
+/* ---------- Zone sensible ---------- */
+.danger-zone { border-color: var(--bad, #f87171); }
+.btn-danger-outline {
+  --bs-btn-color: var(--bad, #f87171);
+  --bs-btn-border-color: var(--bad, #f87171);
+  --bs-btn-border-width: 2px;
+  --bs-btn-border-radius: 10px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--bad, #f87171);
+  --bs-btn-hover-border-color: var(--bad, #f87171);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--bad, #f87171);
+  --bs-btn-active-border-color: var(--bad, #f87171);
+  min-height: 44px;
+}
+.btn-danger-solid {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #c0392b;
+  --bs-btn-border-color: #c0392b;
+  --bs-btn-border-radius: 10px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #a52f23;
+  --bs-btn-hover-border-color: #a52f23;
+  min-height: 44px;
+}
+
+/* ---------- Modales ---------- */
+#scoresModal,
+#deleteModal {
+  --bs-modal-bg: var(--surface);
+  --bs-modal-border-color: var(--accent);
+  --bs-modal-border-width: 2px;
+  --bs-modal-border-radius: 16px;
+}
+#deleteModal { --bs-modal-border-color: var(--bad, #f87171); }

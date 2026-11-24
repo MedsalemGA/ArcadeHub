@@ -50,13 +50,18 @@
   // ---------- Couleurs (lues dans les variables CSS du site) ----------
   const css = getComputedStyle(document.documentElement);
   const cssVar = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
-  const COLORS = {
-    cellA: cssVar("--bg", "#0f1020"),
-    cellB: cssVar("--surface", "#1a1b33"),
-    snake: cssVar("--accent", "#7c5cff"),
-    head: cssVar("--accent-2", "#22d3a6"),
-    food: cssVar("--gold", "gold")
-  };
+  const readColors = () => ({
+  cellA: cssVar("--bg", "#0f1020"),
+  cellB: cssVar("--surface", "#1a1b33"),
+  snake: cssVar("--accent", "#7c5cff"),
+  head: cssVar("--accent-2", "#22d3a6"),
+  food: cssVar("--gold", "gold")
+});
+  const COLORS = readColors();
+  document.addEventListener("themechange", () => {
+  Object.assign(COLORS, readColors());
+  draw();
+})
 
   // ---------- État ----------
   let snake, dir, queue, food;

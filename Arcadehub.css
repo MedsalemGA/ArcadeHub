@@ -142,6 +142,8 @@ section[id] { scroll-margin-top: 90px; }
 }
 
 /* Pseudo affiché dans la navbar quand on est connecté */
+a.navbar-user { text-decoration: none; }
+a.navbar-user:hover { color: var(--text); }
 .navbar-user {
   margin: 0.5rem 0.75rem 0.5rem 0;
   font-weight: 600;

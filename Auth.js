@@ -125,6 +125,51 @@
     return { ok: true, user: publicUser(user) };
   }
 
+  // ---------- Gestion du compte connecté ----------
+  function sessionUserId() {
+    const session = read(sessionStorage, SESSION_KEY, null) || read(localStorage, SESSION_KEY, null);
+    return session ? session.id : null;
+  }
+
+  async function updateProfile({ pseudo, email }) {
+    const users = getUsers();
+    const me = users.find((u) => u.id === sessionUserId());
+    if (!me) return { ok: false, error: "session" };
+
+    const cleanPseudo = pseudo.trim();
+    const cleanEmail = email.trim().toLowerCase();
+    if (users.some((u) => u.id !== me.id && u.pseudo.toLowerCase() === cleanPseudo.toLowerCase())) return { ok: false, error: "pseudo" };
+    if (users.some((u) => u.id !== me.id && u.email === cleanEmail)) return { ok: false, error: "email" };
+
+    const oldPseudo = me.pseudo;
+    me.pseudo = cleanPseudo;
+    me.email = cleanEmail;
+    if (!saveUsers(users)) return { ok: false, error: "storage" };
+    return { ok: true, user: publicUser(me), oldPseudo };
+  }
+
+  async function changePassword({ current, next }) {
+    const users = getUsers();
+    const me = users.find((u) => u.id === sessionUserId());
+    if (!me) return { ok: false, error: "session" };
+    if ((await hashPassword(current, me.salt)) !== me.hash) return { ok: false, error: "credentials" };
+
+    me.salt = randomHex(16);
+    me.hash = await hashPassword(next, me.salt);
+    return saveUsers(users) ? { ok: true } : { ok: false, error: "storage" };
+  }
+
+  async function deleteAccount(password) {
+    const users = getUsers();
+    const me = users.find((u) => u.id === sessionUserId());
+    if (!me) return { ok: false, error: "session" };
+    if ((await hashPassword(password, me.salt)) !== me.hash) return { ok: false, error: "credentials" };
+
+    if (!saveUsers(users.filter((u) => u.id !== me.id))) return { ok: false, error: "storage" };
+    clearSession();
+    return { ok: true };
+  }
+
   const logout = () => clearSession();
 
   // ---------- Bouton de la navbar (#connex) ----------
@@ -135,8 +180,9 @@
 
     const user = currentUser();
     if (user) {
-      const hello = document.createElement("span");
+      const hello = document.createElement("a");
       hello.className = "navbar-user";
+      hello.href = "./profil.html";
       hello.textContent = `Bonjour, ${user.pseudo}`;
       btn.before(hello);
       btn.textContent = "Déconnexion";
@@ -158,7 +204,7 @@
     }
   }
 
-  window.ArcadeAuth = { register, login, logout, currentUser, playerName, refreshNavbar };
+  window.ArcadeAuth = { register, login, logout, currentUser, playerName, refreshNavbar, updateProfile, changePassword, deleteAccount };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", refreshNavbar);
   else refreshNavbar();
